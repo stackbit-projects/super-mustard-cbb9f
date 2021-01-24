@@ -1,0 +1,94 @@
+---
+label: Site Configuration
+hide_body: true
+fields:
+- type: text
+  name: title
+  label: Title
+  description: Site title
+  config:
+    required: true
+- type: text
+  name: baseurl
+  label: Base URL
+  description: Serve the website from the given base URL
+  hidden: true
+- type: text
+  name: permalink
+  label: Permalink
+  description: 'The output path for your pages, posts, or collections.'
+  hidden: true
+  default: '/posts/:slug:output_ext'
+- type: file
+  name: favicon
+  label: Favicon
+  description: A square icon that represents your website
+- type: select
+  name: palette
+  label: Color Palette
+  description: The color palette of the theme
+  default: yellow
+  config:
+    required: true
+    source:
+      type: custom
+    options:
+    - yellow
+    - blue
+    - green
+    - red
+- type: field_group
+  name: header
+  label: Header Configuration
+  fields:
+  - type: include
+    name: include_header
+    label: Header Configuration
+    template: header
+- type: field_group
+  name: footer
+  label: Footer Configuration
+  fields:
+  - type: include
+    name: include_footer
+    label: Footer Configuration
+    template: footer
+- type: field_group
+  name: sass
+  label: Sass
+  hidden: true
+  fields:
+  - type: number
+    name: indentWidth
+    label: Indent Width
+    description: Used to determine the number of spaces or tabs to be used for indentation.
+    default: 4
+  - type: select
+    name: style
+    label: Output Style
+    description: Determines the output format of the final CSS style.
+    default: nested
+    config:
+      source:
+        type: custom
+      options:
+      - nested
+      - expanded
+      - compact
+      - compressed
+  - type: number
+    name: precision
+    label: Precision
+    description: Used to determine how many digits after the decimal will be allowed.
+    default: 10
+- type: list
+  name: plugins
+  label: Plugins
+  hidden: true
+- type: list
+  name: exclude
+  label: Exclude
+  description: Exclude directories and/or files from the conversion.
+  hidden: true
+pages:
+- _config.yml
