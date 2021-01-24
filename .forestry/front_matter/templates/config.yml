@@ -16,9 +16,9 @@ fields:
 - type: text
   name: permalink
   label: Permalink
-  description: 'The output path for your pages, posts, or collections.'
+  description: The output path for your pages, posts, or collections.
   hidden: true
-  default: '/posts/:slug:output_ext'
+  default: "/posts/:slug:output_ext"
 - type: file
   name: favicon
   label: Favicon

@@ -2,7 +2,7 @@
 new_page_extension: md
 auto_deploy: false
 admin_path: admin
-webhook_url: 'https://api.stackbit.com/project/600cbb9f4a8f8c0015894b91/webhook/forestry'
+webhook_url: https://api.stackbit.com/project/600cbb9f4a8f8c0015894b91/webhook/forestry
 sections:
 - type: document
   path: _config.yml
@@ -22,7 +22,6 @@ sections:
 - type: jekyll-pages
   label: Pages
   create: all
-  exclude: '{README.md,LICENSE.md}'
   new_doc_ext: md
   templates:
   - page
@@ -33,7 +32,16 @@ sections:
   templates:
   - post
 upload_dir: images
-public_path: /images
+public_path: "/images"
 front_matter_path: ''
 use_front_matter_path: false
-file_template: ':filename:'
+file_template: ":filename:"
+build:
+  preview_env:
+  - JEKYLL_ENV=staging
+  preview_output_directory: _site
+  install_dependencies_command: bundle install --path vendor/bundle
+  preview_docker_image: forestryio/ruby:2.6
+  mount_path: "/srv"
+  instant_preview_command: bundle exec jekyll serve --drafts --unpublished --future
+    -d _site
